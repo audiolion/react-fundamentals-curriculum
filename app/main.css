@@ -21,6 +21,14 @@ h1.ui.header.h1 {
   align-items: center;
 }
 
+.ui.grid {
+  height: 100%;
+}
+
+.ui.menu {
+  overflow: hidden;
+}
+
 .app {
   height: 100%;
 }

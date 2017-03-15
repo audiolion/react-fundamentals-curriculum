@@ -13,13 +13,10 @@ import styles from '../main.css';
 
 const App = () => (
   <Router>
-    <div className='app'>
-
+    <div className='background app aligner'>
       <Navbar />
-
       <Route exact path="/" component={Home} />
       <Route path="/forecast/:city" component={City} />
-
     </div>
   </Router>
 );
@@ -33,7 +30,7 @@ class Navbar extends React.Component {
     const { activeItem } = this.state
 
     return (
-      <Menu className='menu-bg inverted'>
+      <Menu className='menu-bg inverted fixed top' style={{marginBottom: 0, height: '80px'}}>
         <Menu.Item
           name='home'
           onClick={this.handleItemClick}
@@ -113,18 +110,14 @@ class Forecast extends React.Component {
 class Home extends React.Component {
   render() {
     return (
-        <Grid columns={1} centered className='background app' stackable>
-          <div className="aligner">
-            <Item.Group>
-              <Item.Content verticalAlign='middle'>
-                <Header as='h1' className='h1'>Enter a City and State</Header>
-              </Item.Content>
-              <Item.Content verticalAlign='middle' className='row'>
-                <GetWeatherForm placeholder='Rochester, NY' />
-              </Item.Content>
-            </Item.Group>
-          </div>
-        </Grid>
+      <Item.Group>
+        <Item.Content verticalAlign='middle'>
+          <Header as='h1' className='h1'>Enter a City and State</Header>
+        </Item.Content>
+        <Item.Content verticalAlign='middle'>
+          <GetWeatherForm placeholder='Rochester, NY' />
+        </Item.Content>
+      </Item.Group>
     )
   }
 };
@@ -172,7 +165,7 @@ class GetWeatherForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="field">
+          <div className="field" style={{textAlign: 'center'}}>
             <GetWeatherButton
               onClick={this.handleClick}
             />
